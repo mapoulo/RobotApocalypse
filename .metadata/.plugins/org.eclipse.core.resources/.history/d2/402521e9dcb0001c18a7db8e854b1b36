@@ -1,0 +1,38 @@
+package robot.apocalypse.survivor.Services;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import robot.apocalypse.survivor.Entities.Survivor;
+import robot.apocalypse.survivor.Repositories.SurvivorRepo;
+
+
+@Service
+public class SurvivorService {
+	
+	@Autowired
+	private SurvivorRepo repo;
+
+	
+	public Survivor saveSurvivor(Survivor survivor) {
+		return repo.save(survivor);
+	}
+	
+	
+	
+	public List<Survivor> getAllSurvivors(){
+		List<Survivor>  survivorList = new ArrayList<>();
+		repo.findAll().stream().parallel().forEach(survivorList::add);
+		return survivorList;
+	}
+	
+	
+	public Survivor getSurvivorById(double id) {
+		return repo.findByIdentificationNumber(id);
+	}
+
+}

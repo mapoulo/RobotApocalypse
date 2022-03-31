@@ -1,0 +1,31 @@
+package robot.apocalypse.survivor.Entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import robot.apocalypse.survivor.Pojo.Location;
+import robot.apocalypse.survivor.Pojo.Resources;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Survivor {
+	
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	
+	private double IdentificationNumber;
+	private String name;
+	private String gender;
+	private int age;
+
+
+}

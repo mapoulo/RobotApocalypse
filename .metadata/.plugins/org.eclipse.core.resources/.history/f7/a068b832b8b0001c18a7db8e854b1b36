@@ -1,0 +1,5 @@
+package robot.apocalypse.survivor.Controllers;
+
+public class ResourcesController {
+
+}

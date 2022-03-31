@@ -1,0 +1,44 @@
+package robot.apocalypse.survivor.Controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import robot.apocalypse.survivor.Entities.Survivor;
+import robot.apocalypse.survivor.Services.ResourceService;
+import robot.apocalypse.survivor.Services.SurvivorService;
+
+@RestController
+@RequestMapping("/api/survivor")
+public class SurvivorController {
+	
+	
+	@Autowired
+	private SurvivorService service;
+	
+	
+	
+	@PostMapping("/save")
+	public Survivor saveSurvivor(@RequestBody Survivor survivor) {
+		return service.saveSurvivor(survivor);
+	}
+	
+	
+	@GetMapping("/getAllSurvivors")
+	public List<Survivor> getAllSurvivors(){
+		return service.getAllSurvivors();
+	}
+	
+	
+	@GetMapping("/{id}")
+	public Survivor getSurvivorById(@PathVariable  long id) {
+		return service.getSurvivorById(id);
+	}
+
+}

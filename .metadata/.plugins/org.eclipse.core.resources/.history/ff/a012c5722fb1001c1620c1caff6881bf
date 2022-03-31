@@ -1,0 +1,13 @@
+package robot.apocalypse.CPU;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class RobotCpuInfoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(RobotCpuInfoApplication.class, args);
+	}
+
+}

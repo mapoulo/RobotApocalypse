@@ -1,0 +1,34 @@
+server:
+  port: 8091
+  
+
+spring:
+  profiles:
+    active:
+    - prod
+  cloud:
+    config:
+      enabled: true 
+      uri:
+      -  http://localhost:8881
+     
+  datasource:
+    url: jdbc:mysql://localhost:3306/Survivors?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update        
+  application:
+    name: SURVIVOR-SERVICE  
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+        
+        
+        

@@ -1,0 +1,22 @@
+server:
+  port: 8090
+  
+
+spring:
+  profiles:
+    active:
+    - prod
+  cloud:
+    config:
+      enabled: true 
+      uri:
+      -  http://localhost:8881
+      
+      
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"

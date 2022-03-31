@@ -1,0 +1,49 @@
+package robot.apocalypse.survivor.Controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import robot.apocalypse.survivor.Entities.Resources;
+import robot.apocalypse.survivor.Services.ResourceService;
+
+@RestController
+@RequestMapping("/api/resouce")
+public class ResourcesController {
+	
+	
+	@Autowired
+	private ResourceService service;
+	
+	
+	@PostMapping("/")
+	public Resources saveResource(@RequestBody Resources resource) {
+		return service.saveResource(resource);
+	}
+	
+	
+	
+	@GetMapping("/{IdentificationNumber}")
+	public Resources getResourceByIdentificationNumber(@PathVariable double IdentificationNumber) {
+		return service.getResourceByIdentificationNumber(IdentificationNumber);
+	}
+	
+	
+	@PostMapping("/update")
+	public Resources updateResource(@RequestBody Resources resource) {
+		return service.saveResource(resource);
+	}
+	
+	
+	@GetMapping("/")
+	public List<Resources> getAllResources(){
+	   return service.getAllResources();
+	}
+
+}

@@ -1,0 +1,46 @@
+server:
+  port: 8090
+  
+
+spring:
+  profiles:
+    active:
+    - prod
+  cloud:
+    config:
+      enabled: true 
+      uri:
+      -  http://localhost:8881
+     
+  datasource:
+    url: jdbc:mysql://localhost:3306/Survivors?createDatabaseIfNotExist=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update        
+  application:
+    name: SURVIVOR-SERVICE  
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+        
+        
+resilience4j:
+  circuitbreaker:
+    instances:
+      locationService:
+       register-health-indicator: true
+       ring-buffer-size-in-closed-state: 5
+       ring-buffer-size-in-half-open-state: 3
+       wait-duration-in-open-state: 50s
+       failure-rate-threshold: 50
+       event-consumer-buffer-size: 10        
+        
+        
+        

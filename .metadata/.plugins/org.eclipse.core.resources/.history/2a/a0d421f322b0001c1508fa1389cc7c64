@@ -1,0 +1,5 @@
+package robot.apocalypse.location.Entities;
+
+public class Location {
+
+}
