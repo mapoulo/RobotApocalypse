@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import robot.apocalypse.survivor.Entities.Resources;
 import robot.apocalypse.survivor.Entities.Survivor;
 import robot.apocalypse.survivor.Pojo.SurvivorPojo;
 import robot.apocalypse.survivor.Services.ResourceService;
@@ -24,7 +25,8 @@ public class SurvivorController {
 	
 	@Autowired
 	private SurvivorService service;
-	
+	@Autowired
+	private ResourceService resourceService;
 	
 
 	
@@ -32,6 +34,11 @@ public class SurvivorController {
 	@PostMapping("/save")
 	public Survivor saveSurvivor(@RequestBody Survivor survivor) {
 		return service.saveSurvivor(survivor);
+	}
+	
+	@PostMapping("/saveResource")
+	public Resources saveResource(@RequestBody Resources resources) {
+		return resourceService.saveResource(resources);
 	}
 	
 	

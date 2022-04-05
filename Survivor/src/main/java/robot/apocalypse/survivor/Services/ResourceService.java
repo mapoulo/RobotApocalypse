@@ -2,6 +2,7 @@ package robot.apocalypse.survivor.Services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,15 +22,15 @@ public class ResourceService {
 	}
 	
 	
-	Resources resouce;
-	public Resources getResourceByIdentificationNumber(double identificationNumber) {
+	 Resources  resource;
+	public  Resources  getResourceByIdentificationNumber(double identificationNumber) {
 		repo.findAll().parallelStream().forEach(MyResource -> {
 			if(MyResource.getIdentificationNumber() == identificationNumber) {
-				resouce = MyResource;
+				resource = MyResource;
 			}
 		});
 		
-		return resouce;
+		return resource;
 	}
 	
 	

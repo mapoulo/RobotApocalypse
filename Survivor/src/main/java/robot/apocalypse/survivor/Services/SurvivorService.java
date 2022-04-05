@@ -64,18 +64,32 @@ public class SurvivorService {
 		Resources resource = new Resources();
 		SurvivorPojo survivorPojo = new SurvivorPojo();
 		LocationPojo locationPojo = new LocationPojo();
+		Resources   survivorResource = resourceService.getResourceByIdentificationNumber(id);
 		
 		Optional<LocationPojo>  location = Optional.of(getLocation(id));
 		Optional<Survivor>   survivor = Optional.of(repo.findByIdentificationNumber(id));
 		
-		if(survivor.isPresent() && location.isPresent()) {
-			resource = resourceService.getResourceByIdentificationNumber(survivor.get().getIdentificationNumber());
-			survivorPojo.setResource(resource);
+
+		
+		if(survivor.isPresent()) {
 			survivorPojo.setSurvivor(survivor.get());
-			survivorPojo.setLocation(location.get());
+		}else {
+			survivorPojo.setSurvivor(new Survivor());
 		}
 		
+		if(location.isPresent()) {
+			survivorPojo.setLocation(location.get());
+		}else {
+			survivorPojo.setLocation(new LocationPojo());
+		}
 		
+		if(survivorResource != null) {
+			resource = survivorResource;
+			survivorPojo.setResource(resource);
+		}else {
+			survivorPojo.setResource(new Resources());
+		}
+	
 		return survivorPojo;
 	}
 

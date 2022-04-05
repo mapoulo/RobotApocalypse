@@ -26,6 +26,6 @@ public class Survivor {
 	private String gender;
 	private int age;
 	private boolean infected;
-
+    
 
 }
